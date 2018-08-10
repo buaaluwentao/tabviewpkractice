@@ -17,7 +17,6 @@
 		5563BD95211BEABC00C46791 /* LoginTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5563BD94211BEABC00C46791 /* LoginTableViewController.m */; };
 		5563BD98211BEAFE00C46791 /* AddressListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5563BD97211BEAFE00C46791 /* AddressListTableViewController.m */; };
 		5563BD9A211C2A4C00C46791 /* friendsList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5563BD99211C2A4C00C46791 /* friendsList.plist */; };
-		55C55653211D1F0B009E07BD /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C55652211D1F0B009E07BD /* UserInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,8 +56,6 @@
 		5563BD96211BEAFE00C46791 /* AddressListTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AddressListTableViewController.h; sourceTree = "<group>"; };
 		5563BD97211BEAFE00C46791 /* AddressListTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AddressListTableViewController.m; sourceTree = "<group>"; };
 		5563BD99211C2A4C00C46791 /* friendsList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = friendsList.plist; sourceTree = "<group>"; };
-		55C55651211D1F0B009E07BD /* UserInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
-		55C55652211D1F0B009E07BD /* UserInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +106,6 @@
 		5563BD60211BEA3A00C46791 /* TableViewPractice */ = {
 			isa = PBXGroup;
 			children = (
-				55C55650211D1ED4009E07BD /* model */,
 				5563BD9B211C2A5200C46791 /* property */,
 				5563BD61211BEA3A00C46791 /* AppDelegate.h */,
 				5563BD62211BEA3A00C46791 /* AppDelegate.m */,
@@ -150,15 +146,6 @@
 				5563BD99211C2A4C00C46791 /* friendsList.plist */,
 			);
 			path = property;
-			sourceTree = "<group>";
-		};
-		55C55650211D1ED4009E07BD /* model */ = {
-			isa = PBXGroup;
-			children = (
-				55C55651211D1F0B009E07BD /* UserInfo.h */,
-				55C55652211D1F0B009E07BD /* UserInfo.m */,
-			);
-			path = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,7 +282,6 @@
 				5563BD71211BEA3B00C46791 /* main.m in Sources */,
 				5563BD63211BEA3A00C46791 /* AppDelegate.m in Sources */,
 				5563BD95211BEABC00C46791 /* LoginTableViewController.m in Sources */,
-				55C55653211D1F0B009E07BD /* UserInfo.m in Sources */,
 				5563BD98211BEAFE00C46791 /* AddressListTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

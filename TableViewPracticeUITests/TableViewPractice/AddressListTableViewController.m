@@ -19,13 +19,6 @@
 @property (nonatomic,strong )NSArray * friendsGroupList;
 @property (nonatomic,strong) NSDictionary * friendsList;
 @property (nonatomic,strong) UISearchController * searchController;
-@property (nonatomic) NSMutableDictionary * groupUserBelongTo;
-
-@property (nonatomic,strong )NSArray * friendsGroupListBackup;
-@property (nonatomic,strong) NSDictionary * friendsListBackup;
-
-@property (nonatomic,strong )NSArray * filteredFriendsGroupList;
-@property (nonatomic,strong) NSDictionary * filterFriendsList;
 //b@property (nonatomic,strong) NSArray * filter
 @end
 
@@ -38,20 +31,9 @@
     NSBundle * bundle = [NSBundle mainBundle];
     NSString * friendsListPath = [bundle pathForResource:@"friendsList" ofType:@"plist"];
     NSDictionary * frinedsListInfo = [[NSDictionary alloc]initWithContentsOfFile:friendsListPath];
-    
- 
     self.friendsList = frinedsListInfo ;
     NSArray* tempKeys = [self.friendsList allKeys];
     self.friendsGroupList = [tempKeys sortedArrayUsingSelector:@selector(compare:)];
-    self.friendsListBackup = self.friendsList;
-    self.friendsGroupListBackup = self.friendsGroupList;
-    
-    self.groupUserBelongTo = [[NSMutableDictionary alloc] init];
-    for(NSString * groupName in self.friendsGroupList){
-        for(NSString * friend in frinedsListInfo[groupName]){
-            [self.groupUserBelongTo setObject:groupName forKey:friend ];
-        }
-    }
     //self.tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStyleGrouped] ;
 
 
@@ -170,15 +152,14 @@
         return;
     }
     
-    NSMutableArray *friends = [[NSMutableArray alloc] init];
+    NSMutableArray *friends = nil;
     for(NSArray* key in [self.friendsList allKeys]){
         for(NSString * value in self.friendsList[key]){
             [friends addObject:value];
         }
     }
     //NSPredicate *scopePridicate;
-    NSMutableArray *tempArray = [[NSMutableArray alloc] init];
-    NSLog(@"%@,count=%ld" ,searchText ,[friends count]);
+    NSMutableArray *tempArray = nil;
     //构建新的分组
     switch(scope) {
         case -1:
@@ -190,34 +171,13 @@
                 //NSString *temp= [friend stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
                 //NSString *temp = [friend stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
                 if([friend rangeOfString:searchText].location != NSNotFound){
-                    NSLog(@"...");
                     [tempArray addObject:friend];
                 }
             }
             break;
         
     }
-    
-    
-    NSMutableDictionary * temp = [[NSMutableDictionary alloc] init];
-    for(NSString * friend in tempArray){
-        NSString * groupName = [self.groupUserBelongTo objectForKey:friend];
-        if([temp objectForKey:groupName] == nil){
-            NSMutableArray * friendsList= [[NSMutableArray alloc ] init];
-            [friendsList addObject:friend];
-            [temp setObject:friendsList forKey:groupName];
-        }else{
-            [[temp objectForKey:groupName] addObject:friend];
-        }
-        //if()
-        //temp setObject:friend forKey:<#(nonnull id<NSCopying>)#>
-    }
-    
-    //self.friendsListBackup = self.friendsList;
-    self.friendsList = temp;
-    NSArray* tempKeys = [self.friendsList allKeys];
-    self.friendsGroupList = [tempKeys sortedArrayUsingSelector:@selector(compare:)];
-    //self.friendsGroupListBackup = self.friendsGroupList;
+   
     //return
 }
 #pragma mark --实现UISearchBarDelegate方法
@@ -226,17 +186,10 @@
 }
 #pragma mark --实现UISearchResultUpdating协议方法
 - (void) updateSearchResultsForSearchController:(UISearchController *)searchController{
-    /*还原数据*/
-    self.friendsList = self.friendsListBackup;
-    self.friendsGroupList = self.friendsGroupListBackup;
-    
-    
     NSString * searchText = searchController.searchBar.text;
-    
     [self filterContentForSearchText:searchText scope:1];
-    NSLog(@"将要刷新tableview");
-    //self.friendsList = nil;
-    [self.userInfo reloadData];
+    NSLog(@"works well ...");
+    //x[self.userInfo reloadData];
 }
 - (void) searchBarCancelButtonClicked:(UISearchBar *)searchBar{
     

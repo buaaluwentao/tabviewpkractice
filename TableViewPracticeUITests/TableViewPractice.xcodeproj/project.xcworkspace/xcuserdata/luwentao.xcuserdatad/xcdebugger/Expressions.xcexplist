@@ -6,13 +6,7 @@
          contextName = "-[AddressListTableViewController filterContentForSearchText:scope:]:AddressListTableViewController.m">
          <PersistentStrings>
             <PersistentString
-               value = "self.groupUserBelongTo">
-            </PersistentString>
-            <PersistentString
                value = "[self.friendsList allValues]">
-            </PersistentString>
-            <PersistentString
-               value = "[temp objectForKey:groupName] ">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
